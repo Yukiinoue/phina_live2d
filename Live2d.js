@@ -2,16 +2,16 @@ phina.globalize();
 
 var ASSETS = {
   "live2d.moc": {
-    "SecretaryModel": "assets/Secretary/navi_1.moc3",
+    "MarkModel": "assets/Mark/Mark.moc3",
   },
   "image": {
-    "SecretaryTexture": "assets/Secretary/texture_00.png",
+    "MarkTexture": "assets/Mark/Mark.png",
   },
-  "Physics": {
-    "SecretaryPhysics": "assets/Secretary/navi_1.physics3.json",
+  "Physics": {
+    "MarkPhysics": "assets/Mark/Mark.physics3.json",
   },
   "live2d.motion": {
-    "SecretaryMotion": "assets/Secretary/navi1_idle_body.motion3",
+    "MarkMotion": "assets/Mark/Mark.motion3.json",
   },
 };
 
