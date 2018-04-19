@@ -7,9 +7,9 @@ var ASSETS = {
   "image": {
     "MarkTexture": "assets/Mark/Mark.png",
   },
-  "Physics": {
-    "MarkPhysics": "assets/Mark/Mark.physics3.json",
-  },
+  // "Physics": {
+  //   "MarkPhysics": "assets/Mark/Mark.physics3.json",
+  // },
   "live2d.motion": {
     "MarkMotion": "assets/Mark/Mark.motion3.json",
   },
@@ -21,11 +21,27 @@ phina.define('MainScene', {
   init: function() {
     this.superInit();
 
-    // this.player = Sprite('SecretaryTexture', 64, 64).addChildTo(this);
-    var label = Label('Hello, runstant!').addChildTo(this);
-    label.x = this.gridX.center();
-    label.y = this.gridY.center();
-  },
+    var live2dLayer = phina.live2d.Live2DLayer({
+      width: 480,
+      height: 640,
+      originX: 0,
+      originY: 0,
+    });
+
+    live2dLayer.addChildTo(this);
+
+    var mark = phina.live2d.Live2DSprite({
+      moc: "MarkModel",
+      textures: ["MarkTexture"],
+    });
+
+    mark.setPosition(240, 320);
+
+    mark.addChildTo(live2dLayer);
+
+    mark.play("MarkMotion");
+
+    },
 });
 
 phina.main(function() {
@@ -34,23 +50,7 @@ phina.main(function() {
     assets: ASSETS,
   });
 
-  var live2dLayer = phina.live2d.live2DLayer({
-    width: 1280,
-    height: 720,
-    originX: 0,
-    originY: 0,
-  });
-  live2dLayer.addChildTo(this);
-
-  var secretary = phina.live2d.Live2dSprite({
-    moc: "SecretaryModel",
-    textures: ["SecretaryTexture"],
-  });
-
-  secretary.setPosition(1280, 720);
-  secretary.addChildTo(live2dLayer);
-
-  secretary.play("SecretaryMotion");
 
   app.run();
 });
+
